@@ -1,7 +1,7 @@
 ---
 title:          "Human Motion Transfer With 3D Constraints and Detail Enhancement"
 date:           2022-04-01 00:01:00 +0800
-selected:       true
+selected:       false
 pub:            "IEEE Transactions on Pattern Analysis and Machine Intelligence"
 pub_date:       "2023"
 abstract: >-

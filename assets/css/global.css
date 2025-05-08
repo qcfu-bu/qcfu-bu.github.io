@@ -67,3 +67,7 @@ div.lazy {
     font-family: Courier, monospace;
 }
 
+ul#horizontal li {
+    padding-right: 10px;
+    display: inline;
+}

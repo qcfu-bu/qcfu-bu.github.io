@@ -1,61 +1,66 @@
-primary_name: "Your Name"
-secondary_name: ""
-navbar_name: "Your Name"
+primary_name: "Qiancheng Fu"
+secondary_name: "(Robin)"
+navbar_name: "Qiancheng Fu"
 
 positions:
-- logo: /assets/images/badges/MIT_Social_circle.png  # Logo is optional
-  name: Position 1 with logo
-- name: Position 2 without logo
+- logo: /assets/images/badges/BU_logo.png  # Logo is optional
+  name: Ph.D. Candidate at Boston University
+# - name: Position 2 without logo
 
 
-email: "your@email.com"
-# cv_link: link-to-your-cv-file
-gscholar: xFmQpf4AAAAJ  # This is an example, replace it with your own Google Scholar ID
-github: your_github_id
-twitter: your_twitter_id  # Do not include the '@' symbol
+email: "qcfu@bu.com"
+cv_link: /assets/pdf/cv-llt.pdf
+gscholar: D6N9XzsAAAAJ  # This is an example, replace it with your own Google Scholar ID
+github: qcfu-bu
+# twitter: your_twitter_id  # Do not include the '@' symbol
 # wechat_qrcode: /assets/images/etc/wechat.jpg
 # wechat_prompt: >-
 #   Please tell me your <strong>name</strong> and <strong>affiliation</strong> (current or past) when adding my wechat. Thanks!
-# linkedin: your-linked-in-id
-# orcid: 0000-0000-0000-0000
+linkedin: qiancheng-fu-028060195
+orcid: 0000-0002-5234-8565
 
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    A <a href="https://en.wikipedia.org/wiki/Bicolor_cat" target="_blank">bicolor cat</a> is a cat with white fur combined with fur of some other colour, for example solid black, tabby, or colourpointed.
+    I am a Ph.D. student in the Department of Computer Science at Boston University,
+    advised by <a href="https://www.bu.edu/cs/profiles/hongwei-xi/">Prof. Hongwei Xi</a>.
+    My research interests lie in programming languages, type systems, and verification.
   </p>
   <p>
-    There are various patterns of a bicolour cat. These range from the Van-patterned (colour on the crown of the head 
-    and the tail only) to a solid colour with a throat locket or medallion. Bicolour coats are found in many cat breeds, 
-    as well as being common in domestic longhair and domestic shorthair cats.
+    These days research is mainly focused on the design of languages and type
+    systems that tackle issues in memory safety and concurrency as well as the
+    development of novel language features that aid programmer productivity and
+    reasoning. A common thread between my works is that they are guided by ideas
+    from substructural logics while also drawing influences from other areas
+    such as dependent type theory, session types, probabilistic programming, etc.
   </p>
 
-portrait_url: /assets/images/photos/portrait.jpg
+portrait_url: /assets/images/photos/profile.jpeg
 portrait_caption: >-
   Photo by Manja Vitolic on Unsplash (this caption is optional, comment it out to disable).
 
 education:
-- name: Massachusetts Institute of Technology
-  logo: /assets/images/badges/MIT_Social_circle.png
+- name: Boston University
+  logo: /assets/images/badges/BU_logo.png
   position: >- 
-    Department of Electrical Engineering and Computer Science <br/>
+    Department of Computer Science <br/>
     Ph.D. Student
-  date: Sep. 2024 - present
-- name: Peking University
-  logo: /assets/images/badges/PKU_red.png
-  position: B.S. in Computer Science
-  date: Sep. 2019 - Jul. 2021
+  date: Sep. 2019 - present
+- name: North China University of Technology
+  logo: /assets/images/badges/NCUT_logo.jpeg
+  position: B.E. in Computer Science
+  date: Sep. 2015 - Jul. 2019
 
-# experience:
-# - name: Peking University
-#   logo: /assets/images/badges/PKU_red.png
-#   position: Research Intern
-#   date: Sep. 2019 - Jul. 2021
+experience:
+- name: Institute of Computing Technology, Chinese Academy of Sciences
+  logo: /assets/images/badges/ICT_logo.gif
+  position: Research Assistant
+  date: Sep. 2018 - Jul. 2019
 
-awards:
-- name: Award Name 2
-  date: 2024
-- name: Award Name 1 
-  date: 2021
-- name: A quick brown fox jumps over the lazy dog and runs away award
-  date: 2021
+# awards:
+# - name: Award Name 2
+#   date: 2024
+# - name: Award Name 1 
+#   date: 2021
+# - name: A quick brown fox jumps over the lazy dog and runs away award
+#   date: 2021

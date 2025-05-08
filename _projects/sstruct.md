@@ -12,7 +12,7 @@ date: 2025-01-12 00:01:00 +0800
     <p class="card-text">
       <ul id="horizontal">
         <li>
-          <i class="fa fa-github"></i>
+          <i class="fa-brands fa-github"></i>
           <a href="https://github.com/qcfu-bu/SStructTT" target="_blank">Source Repository</a>
         </li>
       </ul>

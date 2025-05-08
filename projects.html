@@ -9,7 +9,6 @@ container_class: container-xl
 
 {% for group in cards_by_group %}
 <h1>{{ group.name }}</h1>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="row grid mb-4">
     <div class="grid-sizer col-1"></div>
     {% for item in group.items %}

@@ -19,7 +19,7 @@ github: qcfu-bu
 linkedin: qiancheng-fu-028060195
 orcid: 0000-0002-5234-8565
 
-short_bio_text_justify: false
+short_bio_text_justify: true
 short_bio: >-
   <p>
     I am a Ph.D. student in the Department of Computer Science at Boston University,

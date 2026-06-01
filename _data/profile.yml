@@ -3,8 +3,8 @@ secondary_name: "(Robin)"
 navbar_name: "Qiancheng Fu"
 
 positions:
-- logo: /assets/images/badges/BU_logo.png  # Logo is optional
-  name: Ph.D. Candidate at Boston University
+- logo: /assets/images/badges/Cornell_logo.png  # Logo is optional
+  name: Postdoctoral Researcher at Cornell University
 # - name: Position 2 without logo
 
 
@@ -57,6 +57,10 @@ experience:
   logo: /assets/images/badges/ICT_logo.gif
   position: Research Assistant
   date: Sep. 2018 - Jul. 2019
+- name: Cornell University
+  logo: /assets/images/badges/Cornell_logo.gif
+  position: Postdoctoral Researcher
+  date: Jan. 2026 - Present
 
 # awards:
 # - name: Award Name 2

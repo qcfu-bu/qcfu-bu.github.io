@@ -1,7 +1,7 @@
 ---
 title:          "A Two-Level Linear Dependent Type Theory"
 date:           2023-09-15 00:01:00 +0800
-selected:       true
+selected:       false
 pub:            "arXiv"
 pub_date:       "2023"
 abstract: >-

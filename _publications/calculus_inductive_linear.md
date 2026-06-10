@@ -1,7 +1,7 @@
 ---
 title:          "A Calculus of Inductive Linear Constructions"
 date:           2023-09-04 00:01:00 +0800
-selected:       true
+selected:       false
 pub:            "Workshop on Type-Driven Development"
 pub_date:       "2023"
 abstract: >-

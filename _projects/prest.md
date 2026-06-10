@@ -1,6 +1,7 @@
 ---
 show: true
 width: 12
+zenodo: 15151161
 date: 2025-01-12 00:01:00 +0800
 ---
 <div>
@@ -20,10 +21,6 @@ date: 2025-01-12 00:01:00 +0800
     </p>
     <p class="card-text">
       <ul id="horizontal">
-        <li>
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/qcfu-bu/PReST" target="_blank">Source Repository</a>
-        </li>
         <li>
           <i class="fa-brands fa-docker"></i>
           <a href="https://zenodo.org/records/15151161" target="_blank">Docker Artifact</a>

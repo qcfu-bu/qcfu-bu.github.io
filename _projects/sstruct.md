@@ -1,6 +1,7 @@
 ---
 show: true
 width: 12
+github: qcfu-bu/SStructTT
 date: 2025-01-12 00:01:00 +0800
 ---
 <div>

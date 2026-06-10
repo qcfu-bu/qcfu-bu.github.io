@@ -1,4 +1,5 @@
 @charset "utf-8";
+
 :root {
     --accent: #455a64;
     --accent-dark: #263238;
@@ -10,8 +11,18 @@ body {
     padding-top: 5.0rem;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
     font-family: "IBM Plex Serif", Georgia, serif;
     font-weight: 700;
 }
@@ -25,7 +36,7 @@ a:hover {
 }
 
 .navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .active > .nav-link {
+.navbar-light .navbar-nav .active>.nav-link {
     color: var(--accent);
 }
 
@@ -34,7 +45,7 @@ a:hover {
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show > .nav-link {
+.nav-pills .show>.nav-link {
     background-color: var(--accent);
 }
 
@@ -128,6 +139,13 @@ a:hover {
 .publication-cover {
     object-fit: contain;
     height: 100px;
+}
+
+/* Compact variant for the homepage selected-publications card.
+   Doubled-up selector so min-height beats the img.lazy placeholder rule. */
+.publication-cover.publication-cover-sm {
+    height: 45px;
+    min-height: 0;
 }
 
 .publication-row .small.text-muted {

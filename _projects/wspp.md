@@ -1,7 +1,7 @@
 ---
 show: true
 width: 6
-group: "Algorithms & Decision Procedures"
+group: "Algebraic Formal Methods"
 date: 2026-06-01 00:01:00 +0800
 ---
 <div>

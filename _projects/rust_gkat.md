@@ -1,7 +1,7 @@
 ---
 show: true
 width: 6
-group: "Algorithms & Decision Procedures"
+group: "Algebraic Formal Methods"
 zenodo: 18304183
 date: 2024-01-12 00:01:00 +0800
 ---

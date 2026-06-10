@@ -1,6 +1,7 @@
 ---
 show: true
-width: 12
+width: 6
+group: "Algorithms & Decision Procedures"
 date: 2026-06-01 00:01:00 +0800
 ---
 <div>

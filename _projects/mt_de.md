@@ -1,6 +1,7 @@
 ---
 show: true
-width: 12
+width: 6
+group: "Tools & Applications"
 youtube: w70WvywXy1s
 date: 2021-01-12 00:01:00 +0800
 ---

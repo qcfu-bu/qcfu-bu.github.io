@@ -1,6 +1,7 @@
 ---
 show: true
-width: 12
+width: 6
+group: "Type Theory & Verification"
 github: qcfu-bu/CLC
 date: 2022-01-12 00:01:00 +0800
 ---
@@ -17,14 +18,7 @@ date: 2022-01-12 00:01:00 +0800
       in a theorem prover and, to the best of our knowledge, is also the only
       formalized linear dependent inductive type system.
     </p>
-    <p class="card-text">
-      <ul id="horizontal">
-        <li>
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/qcfu-bu/CLC" target="_blank">Source Repository</a>
-        </li>
-      </ul>
-    </p>
+
   </div>
 </div>
 

@@ -1,6 +1,7 @@
 ---
 show: true
-width: 12
+width: 6
+group: "Type Theory & Verification"
 zenodo: 15151161
 date: 2025-01-12 00:01:00 +0800
 ---
@@ -19,14 +20,7 @@ date: 2025-01-12 00:01:00 +0800
       Forwarding.  We implement a type checker in OCaml using Z3 and CVC5 to
       efficiently solve complex generated constraints.
     </p>
-    <p class="card-text">
-      <ul id="horizontal">
-        <li>
-          <i class="fa-brands fa-docker"></i>
-          <a href="https://zenodo.org/records/15151161" target="_blank">Docker Artifact</a>
-        </li>
-      </ul>
-    </p>
+
   </div>
 </div>
 

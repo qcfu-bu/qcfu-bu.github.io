@@ -1,6 +1,7 @@
 ---
 show: true
-width: 12
+width: 6
+group: "Type Theory & Verification"
 zenodo: 20328342
 date: 2023-01-12 00:01:00 +0800
 ---
@@ -17,13 +18,6 @@ date: 2023-01-12 00:01:00 +0800
       session types for concurrency and sort-polymorphic schemes to write code
       generically for both linear and unrestricted types.
     </p>
-    <p class="card-text">
-      <ul id="horizontal">
-        <li>
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/qcfu-bu/TLL" target="_blank">Source Repository</a>
-        </li>
-      </ul>
-    </p>
+
   </div>
 </div>

@@ -1,6 +1,7 @@
 ---
 show: true
-width: 12
+width: 6
+group: "Algorithms & Decision Procedures"
 zenodo: 18304183
 date: 2024-01-12 00:01:00 +0800
 ---
@@ -20,14 +21,7 @@ date: 2024-01-12 00:01:00 +0800
       the rust-gkat tool in Rust. Through experiments, we show that our tool
       performs orders of magnitudes faster than existing KAT solvers.
     </p>
-    <p class="card-text">
-      <ul id="horizontal">
-        <li>
-          <i class="fa-brands fa-github"></i>
-          <a href="https://github.com/qcfu-bu/rust-gkat" target="_blank">Source Repository</a>
-        </li>
-      </ul>
-    </p>
+
   </div>
 </div>
 

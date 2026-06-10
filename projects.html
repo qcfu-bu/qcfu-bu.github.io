@@ -8,7 +8,9 @@ container_class: container-xl
 {% assign cards_by_group = site.projects | sort: "date" | reverse | where: "show", true | group_by_exp: "item", "item.group" %}
 
 {% for group in cards_by_group %}
-<h1>{{ group.name }}</h1>
+{% if group.name != "" %}
+<h2 class="pt-4">{{ group.name }}</h2>
+{% endif %}
 <div class="row grid mb-4">
     <div class="grid-sizer col-1"></div>
     {% for item in group.items %}
@@ -24,38 +26,28 @@ container_class: container-xl
     {%- endif -%}
     <div class="p-2 grid-item col-md-{{ item.width | at_most: 12 }} col-sm-{{ width_sm }} col-{{ width_xs }}">
         <div class="{% if item.class != null %}{{ item.class }}{% else %}card border-0 shadow-sm bg-white{% endif %}">
-            {% if item.github or item.zenodo or item.youtube %}
-            <div class="row no-gutters align-items-center">
-                <div class="col-md">
-                    {{ item.content }}
+            {% if item.github %}
+            <a href="https://github.com/{{ item.github }}" target="_blank">
+                <img src="https://opengraph.githubassets.com/1/{{ item.github }}"
+                     alt="GitHub repository preview for {{ item.github }}"
+                     class="card-img-top" loading="lazy">
+            </a>
+            {% elsif item.zenodo %}
+            <a href="https://zenodo.org/records/{{ item.zenodo }}" target="_blank">
+                <div class="zenodo-preview card-img-top d-flex align-items-center justify-content-center">
+                    <img src="{{ '/assets/images/zenodo.svg' | relative_url }}" alt="Zenodo" class="zenodo-logo">
+                    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.{{ item.zenodo }}.svg"
+                         alt="DOI 10.5281/zenodo.{{ item.zenodo }}" loading="lazy">
                 </div>
-                <div class="col-md-auto px-3 pb-3 p-md-3">
-                    {% if item.github %}
-                    <a href="https://github.com/{{ item.github }}" target="_blank">
-                        <img src="https://opengraph.githubassets.com/1/{{ item.github }}"
-                             alt="GitHub repository preview for {{ item.github }}"
-                             class="github-preview rounded" loading="lazy">
-                    </a>
-                    {% elsif item.zenodo %}
-                    <a href="https://zenodo.org/records/{{ item.zenodo }}" target="_blank">
-                        <div class="zenodo-preview rounded d-flex flex-column align-items-center justify-content-center">
-                            <img src="{{ '/assets/images/zenodo.svg' | relative_url }}" alt="Zenodo" class="zenodo-logo">
-                            <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.{{ item.zenodo }}.svg"
-                                 alt="DOI 10.5281/zenodo.{{ item.zenodo }}" loading="lazy">
-                        </div>
-                    </a>
-                    {% elsif item.youtube %}
-                    <iframe class="youtube-preview rounded"
-                            src="https://www.youtube-nocookie.com/embed/{{ item.youtube }}"
-                            title="Video demo"
-                            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen loading="lazy"></iframe>
-                    {% endif %}
-                </div>
-            </div>
-            {% else %}
-            {{ item.content }}
+            </a>
+            {% elsif item.youtube %}
+            <iframe class="youtube-preview card-img-top"
+                    src="https://www.youtube-nocookie.com/embed/{{ item.youtube }}"
+                    title="Video demo"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen loading="lazy"></iframe>
             {% endif %}
+            {{ item.content }}
         </div>
     </div>
     {% endfor %}

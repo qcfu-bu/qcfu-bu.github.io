@@ -1,13 +1,58 @@
 @charset "utf-8";
+:root {
+    --accent: #455a64;
+    --accent-dark: #263238;
+}
+
 body {
-    font-family: "Lato", sans-serif;
+    font-family: "IBM Plex Sans", sans-serif;
     font-weight: 400;
     padding-top: 5.0rem;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "IBM Plex Serif", Georgia, serif;
     font-weight: 700;
+}
+
+a {
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--accent-dark);
+}
+
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .active > .nav-link {
+    color: var(--accent);
+}
+
+.section-title i {
+    color: var(--accent);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background-color: var(--accent);
+}
+
+/* Project cards: match publication titles (normal-weight h5)
+   and abstracts (small, muted text) */
+.card-title {
+    font-weight: 400;
+}
+
+.card-text {
+    font-size: 80%;
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+/* Slightly softer corners than Bootstrap's default .2rem */
+.rounded-sm {
+    border-radius: .5rem !important;
 }
 
 .text-profile-position {
@@ -17,6 +62,15 @@ h1, h2, h3, h4, h5, h6,
 .text-profile-bio {
     /* font-family: "Raleway"; */
     font-weight: 400;
+}
+
+/* Cornell carnelian for the advisor links in the bio */
+.text-profile-bio a {
+    color: #b31b1b;
+}
+
+.text-profile-bio a:hover {
+    color: #8e1515;
 }
 
 .navbar {
@@ -41,6 +95,11 @@ h1, h2, h3, h4, h5, h6,
 
 .publication-cover {
     object-fit: contain;
+    height: 100px;
+}
+
+.publication-row .small.text-muted {
+    line-height: 1.6;
 }
 
 /* Sits between Bootstrap's col-3 (25%) and col-4 (33%) at md,

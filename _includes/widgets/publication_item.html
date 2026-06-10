@@ -5,8 +5,8 @@
 {% assign abstract = item.abstract %}
 {% endif %}
 <div class="d-none d-md-block">
-    <div class="row no-gutters {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray">
-        <div class="publication-cover-col mb-md-0 p-md-3">
+    <div class="row no-gutters publication-row {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray">
+        <div class="publication-cover-col mb-md-0 p-md-3 d-flex align-items-center">
             {%- if item.cover -%}
             <img data-src="{{ item.cover | relative_url }}" alt="{{ item.title }}" class="lazy w-100 rounded-sm publication-cover" src="{{ '/assets/images/empty_300x200.png' | relative_url }}">
             {%- else -%}
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-<div class="row no-gutters d-md-none {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray {% if include.first %}rounded-top{% endif %} {% if include.last %}rounded-bottom{% endif %} {% if item.cover %}lazy{% endif %}" data-src="{{ item.cover | relative_url }}">
+<div class="row no-gutters publication-row d-md-none {% unless include.hide_bottom_border %}border-bottom{% endunless %} border-gray {% if include.first %}rounded-top{% endif %} {% if include.last %}rounded-bottom{% endif %} {% if item.cover %}lazy{% endif %}" data-src="{{ item.cover | relative_url }}">
     <div class="w-100" style="background-color: rgba(255,255,255,0.9);">
         <div class="d-flex align-items-start flex-column py-3 px-4">
             <div class="mb-auto"></div>

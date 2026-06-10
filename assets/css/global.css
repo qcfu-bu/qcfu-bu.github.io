@@ -39,6 +39,29 @@ h1, h2, h3, h4, h5, h6,
     max-height: 120px;
 }
 
+.publication-cover {
+    object-fit: contain;
+}
+
+/* Sits between Bootstrap's col-3 (25%) and col-4 (33%) at md,
+   and between col-2 (16.7%) and col-3 (25%) at xl. */
+@media (min-width: 768px) {
+    .publication-cover-col {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        flex: 0 0 29%;
+        max-width: 29%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .publication-cover-col {
+        flex: 0 0 21%;
+        max-width: 21%;
+    }
+}
+
 .abstract-body {
     min-height: 100px;
 }

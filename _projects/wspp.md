@@ -2,6 +2,7 @@
 show: true
 width: 6
 group: "Algebraic Formal Methods"
+wip: true
 date: 2026-06-01 00:01:00 +0800
 ---
 <div>

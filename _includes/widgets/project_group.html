@@ -37,6 +37,10 @@
                     title="Video demo"
                     allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen loading="lazy"></iframe>
+            {% elsif item.wip %}
+            <div class="wip-preview card-img-top d-flex align-items-center justify-content-center">
+                <span class="wip-emoji">🚧</span> Work in Progress
+            </div>
             {% endif %}
             {{ item.content }}
         </div>

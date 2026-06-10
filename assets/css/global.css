@@ -68,6 +68,20 @@ a:hover {
     display: block;
 }
 
+/* Matches the Zenodo strip styling */
+.wip-preview {
+    gap: .75rem;
+    padding: 1.25rem 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #dee2e6;
+    color: #6c757d;
+    font-weight: 600;
+}
+
+.wip-emoji {
+    font-size: 1.5rem;
+}
+
 /* Slightly softer corners than Bootstrap's default .2rem */
 .rounded-sm {
     border-radius: .5rem !important;

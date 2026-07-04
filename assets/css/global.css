@@ -603,16 +603,17 @@ h5.section-title {
     border: 2px solid var(--text-muted);
 }
 
-.tl-year {
+.tl-year {                          /* shares the section-label style (About/Education) */
     position: absolute;
     left: 0;
-    top: 0.1rem;
+    top: 0.25rem;
     width: 3rem;
     text-align: right;
-    font-family: "IBM Plex Serif", Georgia, serif;
-    font-size: 1.05rem;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.92rem;
     font-weight: 600;
-    color: var(--text);
+    letter-spacing: var(--label-spacing);
+    color: var(--text-muted);
     font-variant-numeric: tabular-nums;
 }
 
@@ -631,8 +632,7 @@ h5.section-title {
     }
 
     .tl-year {
-        width: 2.2rem;
-        font-size: 0.95rem;
+        width: 2.6rem;
     }
 
     .pub-lead {
@@ -671,11 +671,14 @@ h5.section-title {
 
 /* ---------- Projects ---------- */
 
-.project-group-title {
-    margin-top: 2.75rem;
+/* Category headers share the section-label style (like "About"); the
+   .section-title class supplies the font, .content h2 the size + rule. */
+.content h2.project-group-title {
+    font-size: 1.15rem;
+    margin: 2.75rem 0 1.25rem;
 }
 
-.project-group-title:first-child {
+.content h2.project-group-title:first-child {
     margin-top: 0;
 }
 

@@ -386,6 +386,35 @@ h5.section-title {
 
 .publication-row:last-child { border-bottom: 0; }
 
+/* Logo + title/authors share one centered row so the mark sits on the
+   midline of the title+author block; venue/abstract/links sit below. */
+.pub-lead {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.pub-lead-text { flex: 1; min-width: 0; }
+
+.pub-venue-logo {
+    flex: 0 0 auto;
+    width: 72px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Height-cap the square marks (e.g. the ACM diamond) so they grow to match
+   the visual weight of the width-capped wordmarks (ESOP, arXiv, PLDI). */
+.pub-venue-logo img {
+    max-height: 32px;
+    max-width: 58px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Align venue/abstract/links under the title, clearing the logo column. */
+.pub-detail--indented { padding-left: calc(72px + 1.25rem); }
+
 .publication-cover {
     object-fit: contain;
     height: 92px;
@@ -455,17 +484,17 @@ h5.section-title {
     background: var(--border);
 }
 
-.tl-group::after {                  /* year node — carnelian accent */
+.tl-group::after {                  /* year node — hollow neutral ring */
     content: "";
     position: absolute;
     left: 3.9rem;
     top: 0.4rem;
-    width: 9px;
-    height: 9px;
-    margin-left: -4px;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
     border-radius: 50%;
-    background: var(--carnelian);
-    box-shadow: 0 0 0 3px var(--bg);   /* halo lifts the node off the rail */
+    background: var(--bg);
+    border: 2px solid var(--text-muted);
 }
 
 .tl-year {
@@ -488,6 +517,11 @@ h5.section-title {
     .tl-group::before,
     .tl-group::after { left: 2.9rem; }
     .tl-year { width: 2.2rem; font-size: 0.95rem; }
+
+    .pub-lead { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .pub-venue-logo { width: auto; justify-content: flex-start; }
+    .pub-venue-logo img { max-height: 28px; }
+    .pub-detail--indented { padding-left: 0; }
 }
 
 @media (min-width: 768px) {

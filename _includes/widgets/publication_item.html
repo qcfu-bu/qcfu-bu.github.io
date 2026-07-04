@@ -13,11 +13,24 @@
 {% endif %}
 {% endfor %}
 {%- endcapture -%}
+{% assign has_logo = false %}
+{% if include.venue_logo and item.cover %}{% assign has_logo = true %}{% endif %}
 <div class="publication-row">
-    <h5 class="publication-title">{{ item.title }}</h5>
-    <p class="pub-authors">{% include widgets/author_list.html authors=item.authors %}</p>
-    <p class="pub-venue">{{ item.pub_pre }}<i>{{ item.pub }}</i>{{ item.pub_post }} {{ item.pub_date }} {{ item.pub_last }}</p>
-    {% unless include.hide_abstract %}<p class="pub-abstract">{{ abstract }}</p>{% endunless %}
-    {% assign links_stripped = pub_links | strip_newlines | strip %}
-    {% if links_stripped != "" %}<p class="pub-links">{{ pub_links }}</p>{% endif %}
+    <div class="pub-lead">
+        {% if has_logo %}
+        <div class="pub-venue-logo">
+            <img src="{{ item.cover | relative_url }}" alt="{{ item.pub }}" loading="lazy">
+        </div>
+        {% endif %}
+        <div class="pub-lead-text">
+            <h5 class="publication-title">{{ item.title }}</h5>
+            <p class="pub-authors">{% include widgets/author_list.html authors=item.authors %}</p>
+        </div>
+    </div>
+    <div class="pub-detail{% if has_logo %} pub-detail--indented{% endif %}">
+        <p class="pub-venue">{{ item.pub_pre }}<i>{{ item.pub }}</i>{{ item.pub_post }} {{ item.pub_date }} {{ item.pub_last }}</p>
+        {% unless include.hide_abstract %}<p class="pub-abstract">{{ abstract }}</p>{% endunless %}
+        {% assign links_stripped = pub_links | strip_newlines | strip %}
+        {% if links_stripped != "" %}<p class="pub-links">{{ pub_links }}</p>{% endif %}
+    </div>
 </div>

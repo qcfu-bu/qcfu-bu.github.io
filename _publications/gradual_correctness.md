@@ -6,7 +6,7 @@ pub:            "Workshop on Type-Driven Development"
 pub_date:       "2021"
 abstract: >-
   Dependent type systems are powerful tools to eliminate bugs from programs. Unlike other systems of formal methods, dependent type systems can re-use the methodology and syntax that functional programmers are already familiar with for the construction of formal proofs. However, implementations of these languages still have substantial usability issues arising from the conservative equality commonly used in intentional type theories, which can manifest as confusing error messages. In this paper we show how to take a full-spectrum dependently typed language and optimistically delay some equality checking until runtime. The advantage of our method is clear runtime error messages supported by blame that pinpoints the exact source of failure.
-cover:          /assets/images/covers/icfp2021.png
+cover:          /assets/images/covers/acm-mark.svg
 authors:
 - Mark Lemay
 - Qiancheng Fu

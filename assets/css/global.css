@@ -455,17 +455,17 @@ h5.section-title {
     background: var(--border);
 }
 
-.tl-group::after {                  /* year node */
+.tl-group::after {                  /* year node — carnelian accent */
     content: "";
     position: absolute;
     left: 3.9rem;
-    top: 0.35rem;
+    top: 0.4rem;
     width: 9px;
     height: 9px;
     margin-left: -4px;
     border-radius: 50%;
-    background: var(--bg);
-    border: 2px solid var(--accent);
+    background: var(--carnelian);
+    box-shadow: 0 0 0 3px var(--bg);   /* halo lifts the node off the rail */
 }
 
 .tl-year {
@@ -585,8 +585,10 @@ a.project-card:hover {
     padding-top: 1.15rem;
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--accent);
+    color: var(--carnelian);
 }
+
+a.project-card:hover .project-cta { color: var(--carnelian-dark); }
 
 .project-cta i { font-size: 0.72rem; transition: transform 0.2s ease; }
 

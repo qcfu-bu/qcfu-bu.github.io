@@ -22,16 +22,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}">
 </head>
-<body class="bg-light" {{ page.body_attr }}>
-    {% include navbar.html %}
-    <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
-        {{content}}
+<body {{ page.body_attr }}>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-layout">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="layout {% if page.wide %}layout--wide{% endif %}" id="site-layout">
+        {% include sidebar.html %}
+        <div class="nav-scrim" aria-hidden="true"></div>
+        <main class="main">
+            <div class="content">
+                {{ content }}
+            </div>
+        </main>
     </div>
-    {% include footer.html %}
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -52,6 +59,22 @@
               ],
               throwOnError : false
             });
+            var toggle = document.querySelector(".nav-toggle");
+            var layout = document.getElementById("site-layout");
+            var scrim = layout ? layout.querySelector(".nav-scrim") : null;
+            function setNav(open) {
+                layout.classList.toggle("nav-open", open);
+                toggle.setAttribute("aria-expanded", open ? "true" : "false");
+            }
+            if (toggle && layout) {
+                toggle.addEventListener("click", function () {
+                    setNav(!layout.classList.contains("nav-open"));
+                });
+                if (scrim) scrim.addEventListener("click", function () { setNav(false); });
+                document.addEventListener("keydown", function (e) {
+                    if (e.key === "Escape") setNav(false);
+                });
+            }
         });
     </script>
     <script src="{{ '/assets/js/common.js' | relative_url }}"></script>

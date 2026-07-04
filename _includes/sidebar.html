@@ -1,0 +1,77 @@
+{%- assign profile = site.data.profile -%}
+<aside class="sidebar">
+    <div class="sidebar-inner">
+        {% if profile.portrait_url %}
+        <a class="portrait-link" href="{{ '/' | relative_url }}" aria-label="Home">
+            <img class="portrait" src="{{ profile.portrait_url | relative_url }}" alt="{{ profile.primary_name }}">
+        </a>
+        {% endif %}
+
+        <h1 class="identity-name">
+            {{ profile.primary_name }}{% if profile.secondary_name %} <span class="identity-secondary">{{ profile.secondary_name }}</span>{% endif %}
+        </h1>
+
+        {% assign position = profile.positions | first %}
+        {% if position %}
+        <p class="identity-role">
+            {% if position.short %}{{ position.short }}{% else %}{{ position.name }}{% endif %}
+            {% if position.affiliation %}<span class="identity-affil">{{ position.affiliation }}</span>{% endif %}
+        </p>
+        {% endif %}
+
+        {% if profile.tagline %}
+        <p class="identity-tagline">{{ profile.tagline }}</p>
+        {% endif %}
+
+        <nav class="site-nav" aria-label="Primary">
+            {% for item in site.data.navigation.pages %}
+            <a class="site-nav-link {% if item.name == page.navbar_title %}is-active{% endif %}" href="{{ item.url | relative_url }}">{{ item.name }}</a>
+            {% endfor %}
+        </nav>
+
+        <div class="identity-links">
+            {% if profile.email %}
+            <a class="identity-link" href="mailto:{{ profile.email | encode_email }}">
+                <i class="fas fa-envelope fa-fw"></i><span>{{ profile.email | replace: "@", "&#8203;@" }}</span>
+            </a>
+            {% endif %}
+            {% if profile.email2 %}
+            <a class="identity-link" href="mailto:{{ profile.email2 | encode_email }}">
+                <i class="fas fa-envelope fa-fw"></i><span>{{ profile.email2 | replace: "@", "&#8203;@" }}</span>
+            </a>
+            {% endif %}
+            {% if profile.gscholar %}
+            {%- if profile.gscholar contains 'scholar.google' -%}{%- assign gscholar_url = profile.gscholar -%}
+            {%- else -%}{%- assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: profile.gscholar -%}{%- endif -%}
+            <a class="identity-link" target="_blank" rel="noopener" href="{{ gscholar_url }}">
+                <i class="fas fa-graduation-cap fa-fw"></i><span>Google Scholar</span>
+            </a>
+            {% endif %}
+            {% if profile.github %}
+            <a class="identity-link" target="_blank" rel="noopener" href="https://github.com/{{ profile.github }}">
+                <i class="fab fa-github fa-fw"></i><span>GitHub</span>
+            </a>
+            {% endif %}
+            {% if profile.linkedin %}
+            <a class="identity-link" target="_blank" rel="noopener" href="https://www.linkedin.com/in/{{ profile.linkedin }}">
+                <i class="fab fa-linkedin fa-fw"></i><span>LinkedIn</span>
+            </a>
+            {% endif %}
+            {% if profile.orcid %}
+            <a class="identity-link" target="_blank" rel="noopener" href="https://orcid.org/{{ profile.orcid }}">
+                <i class="fab fa-orcid fa-fw"></i><span>ORCID</span>
+            </a>
+            {% endif %}
+            {% if profile.cv_link %}
+            <a class="identity-link" target="_blank" rel="noopener" href="{{ profile.cv_link | relative_url }}">
+                <i class="fas fa-file-lines fa-fw"></i><span>Curriculum Vitae</span>
+            </a>
+            {% endif %}
+        </div>
+
+        <div class="sidebar-footer">
+            &copy; {{ "now" | date: "%Y" }} {{ profile.primary_name }}
+            <span class="sidebar-updated">Updated {{ "now" | date: "%b %Y" }}</span>
+        </div>
+    </div>
+</aside>

@@ -2,9 +2,14 @@ primary_name: "Qiancheng Fu"
 secondary_name: "(Robin)"
 navbar_name: "Qiancheng Fu"
 
+# Short research tagline shown under the name in the identity sidebar.
+tagline: "Programming languages · Type systems · Verification"
+
 positions:
 - logo: /assets/images/badges/Cornell_logo.png  # Logo is optional
   name: Postdoctoral Researcher at Cornell University
+  short: Postdoctoral Researcher
+  affiliation: Cornell University
 # - name: Position 2 without logo
 
 

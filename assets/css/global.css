@@ -1,124 +1,589 @@
 @charset "utf-8";
 
+/* ==========================================================================
+   Minimalist academic homepage — flat, editorial, identity-sidebar layout
+   ========================================================================== */
+
 :root {
-    --accent: #455a64;
-    --accent-dark: #263238;
+    --bg:            #ffffff;
+    --sidebar-bg:    #fbfbfa;
+    --card-bg:       #ffffff;
+
+    --text:          #1f2328;
+    --text-muted:    #6b7280;
+    --text-faint:    #9ca3af;
+
+    --border:        #ececec;
+    --border-strong: #dcdcdc;
+
+    --accent:        #37474f;
+    --accent-hover:  #14202a;
+    --carnelian:     #b31b1b;
+    --carnelian-dark:#8e1515;
+
+    --sidebar-width: 300px;
+    --content-max:   740px;
+    --content-wide:  1080px;
+
+    --label-spacing: 0.11em;
 }
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
 
 body {
-    font-family: "IBM Plex Sans", sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     font-weight: 400;
-    padding-top: 5.0rem;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "IBM Plex Serif", Georgia, serif;
-    font-weight: 700;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
 }
 
 a {
     color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s ease;
 }
 
 a:hover {
-    color: var(--accent-dark);
+    color: var(--accent-hover);
+    text-decoration: none;
 }
 
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .active>.nav-link {
-    color: var(--accent);
-}
+img { max-width: 100%; }
 
-.section-title i {
-    color: var(--accent);
-}
-
-.nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
-    background-color: var(--accent);
-}
-
-/* Project cards: match publication titles (normal-weight h5)
-   and abstracts (small, muted text) */
-.card-title {
-    font-weight: 400;
-}
-
-.card-text {
-    font-size: 80%;
-    color: #6c757d;
-    line-height: 1.6;
-}
-
-/* Compact strip: logo and DOI badge side by side */
-.zenodo-preview {
-    gap: 1rem;
-    padding: 1.25rem 1rem;
-    background-color: #fff;
-    border-bottom: 1px solid #dee2e6;
-}
-
-.zenodo-logo {
-    width: 120px;
-}
-
-.youtube-preview {
-    aspect-ratio: 16 / 9;
+hr {
     border: 0;
-    display: block;
+    border-top: 1px solid var(--border);
+    margin: 1.75rem 0;
 }
 
-/* Matches the Zenodo strip styling */
-.wip-preview {
-    gap: .75rem;
-    padding: 1.25rem 1rem;
-    background-color: #fff;
-    border-bottom: 1px solid #dee2e6;
-    color: #6c757d;
+/* ---------- Layout shell ---------- */
+
+.layout { position: relative; }
+
+.main {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    padding: 4.5rem 3rem 5rem;
+}
+
+.content {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    /* 15px matches Bootstrap's container padding so grid .row negative
+       margins (used by the projects masonry) don't overflow horizontally. */
+    padding: 0 15px;
+}
+
+.layout--wide .content { max-width: var(--content-wide); }
+
+/* ---------- Identity sidebar ---------- */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    z-index: 50;
+}
+
+.sidebar-inner {
+    padding: 3rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.portrait-link {
+    display: inline-block;
+    width: 132px;
+    margin-bottom: 1.5rem;
+}
+
+.portrait {
+    width: 132px;
+    height: 132px;
+    object-fit: cover;
+    border-radius: 8px;
+    filter: grayscale(8%);
+    transition: filter 0.25s ease;
+}
+
+.portrait-link:hover .portrait { filter: grayscale(0%); }
+
+.identity-name {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 0 0 0.35rem;
+}
+
+.identity-secondary {
+    color: var(--text-faint);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+.identity-role {
+    font-size: 0.9rem;
+    line-height: 1.45;
+    color: var(--text);
+    margin: 0 0 0.75rem;
+}
+
+.identity-affil {
+    display: block;
+    color: var(--text-muted);
+}
+
+.identity-tagline {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+    margin: 0 0 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Sidebar navigation */
+
+.site-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    margin-bottom: 1.75rem;
+}
+
+.site-nav-link {
+    font-size: 0.95rem;
+    color: var(--text);
+    padding: 0.2rem 0;
+    position: relative;
+    width: fit-content;
+}
+
+.site-nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0.05rem;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.2s ease;
+}
+
+.site-nav-link:hover::after { width: 100%; }
+
+.site-nav-link.is-active {
+    color: var(--accent-hover);
     font-weight: 600;
 }
 
-.wip-emoji {
-    font-size: 1.5rem;
+.site-nav-link.is-active::after {
+    width: 100%;
+    background: var(--accent);
 }
 
-/* Slightly softer corners than Bootstrap's default .2rem */
-.rounded-sm {
-    border-radius: .5rem !important;
+/* Sidebar contact links */
+
+.identity-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--border);
 }
 
-.text-profile-position {
+.identity-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    word-break: break-word;
+}
+
+.identity-link i {
+    color: var(--text-faint);
+    font-size: 0.9rem;
+    transition: color 0.15s ease;
+    flex-shrink: 0;
+}
+
+.identity-link:hover { color: var(--accent-hover); }
+.identity-link:hover i { color: var(--accent); }
+
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: var(--text-faint);
+}
+
+.sidebar-updated { display: block; }
+
+/* ---------- Mobile navigation toggle ---------- */
+
+.nav-toggle {
+    display: none;
+    position: fixed;
+    top: 0.85rem;
+    left: 0.85rem;
+    z-index: 60;
+    width: 2.4rem;
+    height: 2.4rem;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.nav-scrim {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    z-index: 40;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+/* ---------- Content blocks & section labels ---------- */
+
+.block { margin-bottom: 3rem; }
+.block:last-child { margin-bottom: 0; }
+
+.section-title,
+h5.section-title {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: var(--label-spacing);
+    color: var(--text-muted);
+    margin: 0 0 1rem;
+}
+
+.section-title i { color: var(--text-faint); font-size: 0.85em; }
+
+.section-title a {
+    text-transform: none;
+    letter-spacing: normal;
     font-weight: 400;
 }
 
-.text-profile-bio {
-    /* font-family: "Raleway"; */
-    font-weight: 400;
+.section-title a small { font-size: 0.85rem; }
+
+/* Prose / bio */
+
+.prose {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
 }
 
-/* Cornell carnelian for the advisor links in the bio */
+.prose p { margin: 0 0 1rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+/* Cornell carnelian for advisor links in the bio */
+.prose a,
 .text-profile-bio a {
-    color: #b31b1b;
+    color: var(--carnelian);
+    border-bottom: 1px solid rgba(179, 27, 27, 0.25);
 }
 
+.prose a:hover,
 .text-profile-bio a:hover {
-    color: #8e1515;
+    color: var(--carnelian-dark);
+    border-bottom-color: var(--carnelian-dark);
 }
 
-.navbar {
-    opacity: 0.95;
+/* Page-level headings (year groups, project groups) */
+
+.content h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 0 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
 }
+
+/* ---------- Experience / Education ---------- */
+
+.info-columns { display: flex; flex-wrap: wrap; gap: 2.5rem; }
+
+.info-group { flex: 1 1 260px; }
+
+.info-list { list-style: none; padding: 0; margin: 0; }
+
+.info-item {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.info-item:first-child { border-top: 0; }
+
+.info-logo {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+}
+
+.info-body { flex: 1; min-width: 0; }
+
+.info-name { font-size: 0.92rem; color: var(--text); }
+
+.info-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.info-meta .info-date { white-space: nowrap; font-style: italic; }
+
+/* ---------- Publications ---------- */
+
+.pub-section { margin-bottom: 2.5rem; }
+
+.publication-row {
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.publication-row:last-child { border-bottom: 0; }
+
+.publication-cover {
+    object-fit: contain;
+    height: 92px;
+}
+
+.publication-cover.publication-cover-sm {
+    height: 46px;
+    min-height: 0;
+}
+
+.publication-row p { margin: 0; }
+
+.publication-title {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.02rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin: 0 0 0.35rem;
+}
+
+.publication-row .pub-authors,
+.publication-row .pub-venue,
+.publication-row .pub-abstract { font-size: 0.85rem; }
+
+.publication-row .pub-venue { color: var(--text-muted); margin-top: 0.1rem; }
+
+.publication-row .pub-abstract { color: var(--text-muted); margin-top: 0.4rem; }
+
+.publication-row .pub-links { margin-top: 0.5rem; }
+
+.pub-links { font-size: 0.82rem; }
+
+.pub-links a {
+    margin-right: 0.75rem;
+    white-space: nowrap;
+    border-bottom: 1px solid rgba(55, 71, 79, 0.25);
+}
+
+.pub-links a:hover { border-bottom-color: var(--accent); }
+
+.view-all-link {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .publication-cover-col {
+        position: relative;
+        width: 100%;
+        min-height: 1px;
+        flex: 0 0 22%;
+        max-width: 22%;
+    }
+}
+
+.abstract-body { min-height: 0; }
+
+/* ---------- Projects ---------- */
+
+.project-group-title { margin-top: 2.75rem; }
+.project-group-title:first-child { margin-top: 0; }
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.4rem 1.5rem 1.35rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+a.project-card:hover {
+    border-color: var(--border-strong);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+    color: var(--text);
+}
+
+.project-card--static {
+    border-style: dashed;
+    background: transparent;
+}
+
+.project-source {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    margin-bottom: 0.7rem;
+}
+
+.project-source i { color: var(--text-faint); font-size: 0.85rem; }
+
+.project-source-id {
+    font-family: "IBM Plex Mono", Courier, monospace;
+    letter-spacing: -0.01em;
+}
+
+.project-source--wip {
+    text-transform: uppercase;
+    letter-spacing: var(--label-spacing);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-faint);
+}
+
+.project-title {
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.08rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 0.5rem;
+}
+
+.project-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.project-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: auto;
+    padding-top: 1.15rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.project-cta i { font-size: 0.72rem; transition: transform 0.2s ease; }
+
+a.project-card:hover .project-cta i { transform: translateX(3px); }
+
+@media (max-width: 640px) {
+    .project-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- News ---------- */
+
+.news-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-top: 1px solid var(--border);
+}
+
+.news-item:first-child { border-top: 0; }
+
+.news-year {
+    flex: 0 0 3rem;
+    color: var(--text-faint);
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.news-body { flex: 1; }
+
+.news-entry {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding: 0.15rem 0;
+}
+
+.news-date { color: var(--text-faint); white-space: nowrap; font-size: 0.8rem; }
+
+/* ---------- Bootstrap neutralization (flat look) ---------- */
+
+.shadow, .shadow-sm, .shadow-lg { box-shadow: none !important; }
+
+.card {
+    border: 0;
+    background: transparent;
+    border-radius: 0;
+}
+
+.bg-light, .bg-white { background: transparent !important; }
+
+.rounded-sm { border-radius: 0.5rem !important; }
+
+/* ---------- Functional bits (kept from template) ---------- */
 
 .inline-badge {
     height: 16px;
@@ -127,79 +592,55 @@ a:hover {
     line-break: unset;
 }
 
-.no-break {
-    white-space: nowrap;
-}
+.no-break { white-space: nowrap; }
 
-.cover-image {
-    width: 180px;
-    max-height: 120px;
-}
+.email-text { font-family: "IBM Plex Mono", Courier, monospace; }
 
-.publication-cover {
-    object-fit: contain;
-    height: 100px;
-}
-
-/* Compact variant for the homepage selected-publications card.
-   Doubled-up selector so min-height beats the img.lazy placeholder rule. */
-.publication-cover.publication-cover-sm {
-    height: 45px;
-    min-height: 0;
-}
-
-.publication-row .small.text-muted {
-    line-height: 1.6;
-}
-
-/* Sits between Bootstrap's col-3 (25%) and col-4 (33%) at md,
-   and between col-2 (16.7%) and col-3 (25%) at xl. */
-@media (min-width: 768px) {
-    .publication-cover-col {
-        position: relative;
-        width: 100%;
-        min-height: 1px;
-        flex: 0 0 29%;
-        max-width: 29%;
-    }
-}
-
-@media (min-width: 1200px) {
-    .publication-cover-col {
-        flex: 0 0 21%;
-        max-width: 21%;
-    }
-}
-
-.abstract-body {
-    min-height: 100px;
-}
+.cover-image { width: 180px; max-height: 120px; }
 
 img.lazy {
     background-image: url('images/loading.gif');
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: 50px 50px;
-    min-height: 80px;
+    background-size: 40px 40px;
+    min-height: 46px;
 }
 
 div.lazy {
     background-image: url('images/loading.gif');
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: 50px 50px;
+    background-size: 40px 40px;
     min-height: 80px;
 }
 
-.badge-publication {
-    font-size: 100%;
+.badge-publication { font-size: 100%; }
+
+ul#horizontal li { padding-right: 10px; display: inline; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+    .nav-toggle { display: flex; }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-open .sidebar { transform: translateX(0); }
+
+    .nav-open .nav-scrim { display: block; opacity: 1; }
+
+    .main {
+        margin-left: 0;
+        padding: 4rem 1.5rem 4rem;
+    }
 }
 
-.email-text {
-    font-family: Courier, monospace;
-}
-
-ul#horizontal li {
-    padding-right: 10px;
-    display: inline;
+@media (max-width: 480px) {
+    .main { padding: 4rem 1.15rem 3rem; }
+    .prose { text-align: left; }
+    .info-columns { gap: 1.5rem; }
 }

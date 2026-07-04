@@ -1,14 +1,12 @@
 {% assign publications = include.publications %}
-<div class="my-4 p-0 bg-white shadow-sm rounded-sm">
-    <h5 class="section-title border-bottom border-gray p-3 mb-0">
-        {% if include.title %}{{ include.title }}{% else %}Selected Recent Publications{% endif %}
-        <a href="{{ 'publications' | relative_url }}"><small>(view all <i class="fas fa-angle-double-right"></i>)</small></a>
+<section class="block pub-section">
+    <h5 class="section-title">
+        {% if include.title %}{{ include.title }}{% else %}Selected Publications{% endif %}
     </h5>
-    {% for item in publications limit:include.limit %}
-        {% include widgets/publication_item.html item=item first=false last=false truncate_abstract=50 hide_abstract=include.hide_abstract compact=include.compact %}
-    {% endfor %}
-    <h6 class="d-block p-3 mt-0 text-right">
-        <a href="{{ 'publications' | relative_url }}">All publications <i class="fas fa-angle-double-right"></i></a>
-    </h6>
-</div>
-
+    <div class="pub-list">
+        {% for item in publications limit:include.limit %}
+            {% include widgets/publication_item.html item=item truncate_abstract=50 hide_abstract=include.hide_abstract compact=include.compact %}
+        {% endfor %}
+    </div>
+    <a class="view-all-link" href="{{ 'publications' | relative_url }}">All publications &rarr;</a>
+</section>

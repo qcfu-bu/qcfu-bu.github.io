@@ -433,6 +433,63 @@ h5.section-title {
     margin-top: 1rem;
 }
 
+/* Publications timeline */
+
+.timeline { position: relative; }
+
+.tl-group {
+    position: relative;
+    padding-left: 5rem;
+    padding-bottom: 1.75rem;
+}
+
+.tl-group:last-child { padding-bottom: 0; }
+
+.tl-group::before {                 /* vertical rail */
+    content: "";
+    position: absolute;
+    left: 3.9rem;
+    top: 0.2rem;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+}
+
+.tl-group::after {                  /* year node */
+    content: "";
+    position: absolute;
+    left: 3.9rem;
+    top: 0.35rem;
+    width: 9px;
+    height: 9px;
+    margin-left: -4px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+}
+
+.tl-year {
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: 3rem;
+    text-align: right;
+    font-family: "IBM Plex Serif", Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.tl-items .publication-row:first-child { padding-top: 0; }
+
+@media (max-width: 560px) {
+    .tl-group { padding-left: 3.9rem; }
+    .tl-group::before,
+    .tl-group::after { left: 2.9rem; }
+    .tl-year { width: 2.2rem; font-size: 0.95rem; }
+}
+
 @media (min-width: 768px) {
     .publication-cover-col {
         position: relative;

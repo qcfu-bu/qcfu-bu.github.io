@@ -6,13 +6,15 @@ navbar_title: Publications
 
 {% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
 
-{% for year in pubs_by_year %}
-<section class="pub-section">
-    <h2 id="year-{{ year.name }}">{{ year.name }}</h2>
-    <div class="pub-list">
-        {% for item in year.items %}
-            {% include widgets/publication_item.html item=item truncate_abstract=50 %}
-        {% endfor %}
-    </div>
-</section>
-{% endfor %}
+<div class="timeline">
+    {% for year in pubs_by_year %}
+    <section class="tl-group">
+        <div class="tl-year">{{ year.name }}</div>
+        <div class="tl-items">
+            {% for item in year.items %}
+                {% include widgets/publication_item.html item=item truncate_abstract=50 %}
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</div>

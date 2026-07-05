@@ -842,6 +842,12 @@ a.project-card:hover .project-cta i {
     background: transparent !important;
 }
 
+/* Bootstrap hardcodes .text-body dark with !important; route it through the
+   theme variable so author names invert correctly in dark mode. */
+.text-body {
+    color: var(--text) !important;
+}
+
 .rounded-sm {
     border-radius: 0.5rem !important;
 }
@@ -932,5 +938,62 @@ ul#horizontal li {
 
     .info-columns {
         gap: 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   Dark mode — automatically follows the operating system theme
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg:            #14161a;
+        --sidebar-bg:    #0f1115;
+        --card-bg:       #1b1e24;
+
+        --text:          #e5e7eb;
+        --text-muted:    #9aa1ac;
+        --text-faint:    #6b727d;
+
+        --border:        #282c33;
+        --border-strong: #3a3f48;
+
+        --accent:        #a9bcc9;
+        --accent-hover:  #d6e0e7;
+        --carnelian:     #e7767b;
+        --carnelian-dark:#f0989c;
+    }
+
+    /* Dark frosted-glass panel over the CDS photo. */
+    .sidebar-inner {
+        background: rgba(15, 17, 21, 0.74);
+    }
+
+    /* Venue logos are dark-ink artwork on light/transparent backgrounds;
+       a small light chip keeps them legible on the dark page. */
+    .pub-venue-logo img {
+        background: #f1f1ef;
+        padding: 3px 5px;
+        border-radius: 5px;
+    }
+
+    /* Link underlines follow the lightened accent / carnelian. */
+    .prose a,
+    .text-profile-bio a {
+        border-bottom-color: rgba(231, 118, 123, 0.4);
+    }
+
+    .pub-links a {
+        border-bottom-color: rgba(169, 188, 201, 0.35);
+    }
+
+    /* A shadow that actually reads on a dark surface. */
+    a.project-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    /* The light-mode grayscale nudge muddies the portrait on dark. */
+    .portrait {
+        filter: none;
     }
 }
